@@ -1,0 +1,19 @@
+{
+  "name": "employees_manager_api",
+  "version": "1.0.0",
+  "description": "employees  manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivailoAndonov/employees_manager_API.git"
+  },
+  "author": "ivailoAndonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivailoAndonov/employees_manager_API/issues"
+  },
+  "homepage": "https://github.com/ivailoAndonov/employees_manager_API#readme"
+}
