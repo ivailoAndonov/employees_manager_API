@@ -11,6 +11,7 @@ router.use(employees.createEmployee)
 router.use(employees.editEmployee)
 
 // settings
+router.use(settings.getTemplates)
 router.use(settings.editSettingsSectors)
 router.use(settings.editSettingsSkills)
 
