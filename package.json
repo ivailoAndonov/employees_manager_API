@@ -2,7 +2,7 @@
   "name": "employees_manager_api",
   "version": "1.0.0",
   "description": "employees  manager",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "prod": "cross-env NODE_ENV=production node index.js",
