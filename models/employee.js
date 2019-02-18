@@ -41,7 +41,7 @@ const EmployeeSchema = new Schema({
             message: 'arrivalDate must be smaller than 20 !'
         }
     },
-    skills: {
+    skill: {
         type: String,
         required: true,
         validate: {
