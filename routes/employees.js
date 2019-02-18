@@ -1,10 +1,5 @@
-'use strict'
-
 const express = require('express');
 const router = express.Router();
-
-// const verify = require('../middleware/auth').verify
-// const logsModel = require('../models/Logs')
 
 const EmployeeModel = require('../models/employee')
 const skillsList = require('../globals/skillsList')
@@ -13,7 +8,7 @@ const sectorsList = require('../globals/sectorsList')
 module.exports = {
   getAllEmployees: router.get('/employees', async (req, res) => {
 
-    console.log(req.query.filters);
+    // console.log(req.query.filters);
 
     try {
       let sortField = req.query.sortField || 'name';
@@ -36,8 +31,6 @@ module.exports = {
           }
         }
       }
-
-      console.log(filter);
 
       EmployeeModel.find(filter, ['name', 'sector', 'skill', 'salary', 'arrivalDate', 'noLongerEmployee'], {
         sort: {
@@ -66,7 +59,7 @@ module.exports = {
   }),
   getOneEmployee: router.get('/employees/:name/:id', async (req, res) => {
 
-    console.log("req.params", req.params)
+    // console.log(req.params)
 
     try {
       let sectors = sectorsList.getSectors();
@@ -115,8 +108,9 @@ module.exports = {
 
   }),
   editEmployee: router.post('/employees/:name/:id', async (req, res) => {
-    console.log(req.params.id);
-    console.log(req.body)
+
+    // console.log(req.params)
+    // console.log(req.body)
 
     try {
       let sectors = sectorsList.getSectors();
@@ -124,12 +118,12 @@ module.exports = {
 
       if (req.body.archive === true) {
         EmployeeModel.findOneAndUpdate({
-          name: req.params.name // search query
+          name: req.params.name
         }, {
-            noLongerEmployee: true // field:values to update
+            noLongerEmployee: true
           }, {
-            new: true, // return updated doc
-            runValidators: true // validate before update
+            new: true,
+            runValidators: true
           })
           .then((data) => {
             return res.json({
@@ -144,26 +138,28 @@ module.exports = {
             console.error(err)
           })
       } else {
-        // EmployeeModel.findOneAndUpdate({
-        //   name: req.params.name // search query
-        // }, {
-        //     noLongerEmployee: true // field:values to update
-        //   }, {
-        //     new: true, // return updated doc
-        //     runValidators: true // validate before update
-        //   })
-        //   .then((data) => {
-        //     return res.json({
-        //       user: data,
-        //       filters: {
-        //         sectors,
-        //         skills
-        //       }
-        //     })
-        //   })
-        //   .catch(err => {
-        //     console.error(err)
-        //   })
+        let employee = req.body.payload;
+
+        EmployeeModel.findOneAndUpdate({
+          name: req.params.name 
+        },
+          employee
+          , {
+            new: true,
+            runValidators: true
+          })
+          .then((data) => {
+            return res.json({
+              user: data,
+              filters: {
+                sectors,
+                skills
+              }
+            })
+          })
+          .catch(err => {
+            console.error(err)
+          })
       }
 
     } catch (error) {
@@ -171,17 +167,5 @@ module.exports = {
       return res.status(500).send();
     }
 
-  }),
-  // archiveEmployee: router.post('/employees/:name/:id/archive', async (req, res) => {
-
-  //   try {
-  //     return res.json({
-  //       ok: 'ok'
-  //     })
-  //   } catch (error) {
-  //     console.log(error);
-  //     return res.status(500).send();
-  //   }
-
-  // })
+  })
 };

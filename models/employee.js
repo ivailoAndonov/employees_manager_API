@@ -7,24 +7,20 @@ const EmployeeSchema = new Schema({
     name: {
         type: String,
         trim: true,
-        // lowercase: true,
         unique: true,
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'name must be smaller than 20 !'
         },
     },
-    // age: { type: Number, min: 0, max: 110 }, //
     age: {
         type: String,
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'age must be smaller than 20 !'
@@ -35,7 +31,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'arrivalDate must be smaller than 20 !'
@@ -46,7 +41,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'skills must be smaller than 20 !'
@@ -57,7 +51,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'salary must be smaller than 20 !'
@@ -68,7 +61,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'sector must be smaller than 20 !'
@@ -79,7 +71,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'nationality must be smaller than 20 !'
@@ -90,7 +81,6 @@ const EmployeeSchema = new Schema({
         required: true,
         validate: {
             validator: (v) => {
-                console.log(v)
                 return v.length < 20;
             },
             message: 'timeInCompany must be smaller than 20 !'
@@ -102,7 +92,6 @@ const EmployeeSchema = new Schema({
             required: true,
             validate: {
                 validator: (v) => {
-                    console.log(v)
                     return v.length < 20;
                 },
                 message: 'contacts must be smaller than 20 !'
@@ -113,7 +102,6 @@ const EmployeeSchema = new Schema({
             required: true,
             validate: {
                 validator: (v) => {
-                    console.log(v)
                     return v.length < 20;
                 },
                 message: 'phoneNumber must be smaller than 20 !'
@@ -135,48 +123,7 @@ const EmployeeSchema = new Schema({
     noLongerEmployee: {
         type: Boolean,
         default: false
-        // required: true
     }
 })
 
 module.exports = Employee = mongoose.model('employees', EmployeeSchema);
-
-
-// ========================================================
-
-
-// // //  Nalagame koi model s koq shema da se validira
-// const Employee = mongoose.model(modelName, modelShema);
-
-// //  Syzdavame si obekt koito da izprashtame kym bazata 
-// let user = new Employee({
-//     name: 'Gosho',
-//     age: 30,
-//     arrivalDate: new Date(2016, 10, 10),
-//     skills: ['JavaScript', 'HTML', 'CSS'],
-//     salary: 3300,
-//     sector: 'Development',
-//     nationality: 'Bulgaria',
-//     timeInCompany: '',
-//     contacts: {
-//         address: 'Sofia, 456 street',
-//         phoneNumber: '0888 999 111',
-//         mail: 'test@test.com'
-//     }
-
-// })
-// user.save((err, entry, numAffected) => { // Save e instancionen metod kato update, remove
-//     // err - greshkata
-//     // entry - obekta koito sme podali
-//     // naumAffected - broq redove koito sme zasegnali
-//     console.log(entry);
-//     console.log(numAffected);
-// }) 
-
-// Employee.find({})
-//     .then((data) => {
-//         console.log(data);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })

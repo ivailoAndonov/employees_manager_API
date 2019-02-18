@@ -22,13 +22,10 @@ async function start() {
         .then(() => consola.info('MongoDB Connected'))
         .catch(err => consola.error(new Error(err)))
 
-    //   setDBScripts()
     app.use(routes)
 
-    // app.set('port', PORT)
-
     // Listen the server
-    app.listen(PORT, HOST, () => {
+    app.listen(PORT, () => {
         consola.ready({
             message: `Server listening on http://${HOST}:${PORT}`,
             badge: true
